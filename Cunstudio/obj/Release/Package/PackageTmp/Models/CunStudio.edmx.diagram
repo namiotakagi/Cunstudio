@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="db0010be599142ae92f8f3ad42b2ec62" Name="Diagram1">
+        <EntityTypeShape EntityType="CunstudioModel.Admin" Width="1.5" PointX="8.25" PointY="4.5" />
+        <EntityTypeShape EntityType="CunstudioModel.Album" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="CunstudioModel.Anh" Width="1.5" PointX="3" PointY="4.5" />
+        <EntityTypeShape EntityType="CunstudioModel.GoiDichVu" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CunstudioModel.GopYKH" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="CunstudioModel.HopDong" Width="1.5" PointX="6" PointY="4.5" />
+        <EntityTypeShape EntityType="CunstudioModel.KhachHang" Width="1.5" PointX="0.75" PointY="4.5" />
+        <AssociationConnector Association="CunstudioModel.FK_Admin_HopDong" />
+        <AssociationConnector Association="CunstudioModel.FK_Anh_Admin" />
+        <AssociationConnector Association="CunstudioModel.FK_HopDong_Admin" />
+        <AssociationConnector Association="CunstudioModel.FK_Anh_Albums" />
+        <AssociationConnector Association="CunstudioModel.FK_Anh_KhachHang" />
+        <AssociationConnector Association="CunstudioModel.FK_HopDong_DoiDichVu" />
+        <AssociationConnector Association="CunstudioModel.FK_HopDong_KhachHang" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

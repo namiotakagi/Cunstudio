@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CunstudioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CunstudioEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="CunstudioModel.Admin" />
+    <EntitySet Name="Albums" EntityType="CunstudioModel.Album" />
+    <EntitySet Name="Anhs" EntityType="CunstudioModel.Anh" />
+    <EntitySet Name="GoiDichVus" EntityType="CunstudioModel.GoiDichVu" />
+    <EntitySet Name="GopYKHs" EntityType="CunstudioModel.GopYKH" />
+    <EntitySet Name="HopDongs" EntityType="CunstudioModel.HopDong" />
+    <EntitySet Name="KhachHangs" EntityType="CunstudioModel.KhachHang" />
+    <AssociationSet Name="FK_Admin_HopDong" Association="CunstudioModel.FK_Admin_HopDong">
+      <End Role="HopDong" EntitySet="HopDongs" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Anh_Admin" Association="CunstudioModel.FK_Anh_Admin">
+      <End Role="Admin" EntitySet="Admins" />
+      <End Role="Anh" EntitySet="Anhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HopDong_Admin" Association="CunstudioModel.FK_HopDong_Admin">
+      <End Role="Admin" EntitySet="Admins" />
+      <End Role="HopDong" EntitySet="HopDongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Anh_Albums" Association="CunstudioModel.FK_Anh_Albums">
+      <End Role="Album" EntitySet="Albums" />
+      <End Role="Anh" EntitySet="Anhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Anh_KhachHang" Association="CunstudioModel.FK_Anh_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="Anh" EntitySet="Anhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HopDong_DoiDichVu" Association="CunstudioModel.FK_HopDong_DoiDichVu">
+      <End Role="GoiDichVu" EntitySet="GoiDichVus" />
+      <End Role="HopDong" EntitySet="HopDongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HopDong_KhachHang" Association="CunstudioModel.FK_HopDong_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="HopDong" EntitySet="HopDongs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="ID_Admin" />
+    </Key>
+    <Property Name="ID_Admin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="TaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID_HopDong" Type="Int32" />
+    <NavigationProperty Name="HopDong" Relationship="CunstudioModel.FK_Admin_HopDong" FromRole="Admin" ToRole="HopDong" />
+    <NavigationProperty Name="Anhs" Relationship="CunstudioModel.FK_Anh_Admin" FromRole="Admin" ToRole="Anh" />
+    <NavigationProperty Name="HopDongs" Relationship="CunstudioModel.FK_HopDong_Admin" FromRole="Admin" ToRole="HopDong" />
+  </EntityType>
+  <EntityType Name="Album">
+    <Key>
+      <PropertyRef Name="ID_Album" />
+    </Key>
+    <Property Name="ID_Album" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenAlbum" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Anhs" Relationship="CunstudioModel.FK_Anh_Albums" FromRole="Album" ToRole="Anh" />
+  </EntityType>
+  <EntityType Name="Anh">
+    <Key>
+      <PropertyRef Name="ID_Anh" />
+    </Key>
+    <Property Name="ID_Anh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Album" Type="Int32" />
+    <Property Name="ID_Admin" Type="Int32" />
+    <Property Name="ID_KhachHang" Type="Int32" />
+    <Property Name="HienThi" Type="Boolean" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Admin" Relationship="CunstudioModel.FK_Anh_Admin" FromRole="Anh" ToRole="Admin" />
+    <NavigationProperty Name="Album" Relationship="CunstudioModel.FK_Anh_Albums" FromRole="Anh" ToRole="Album" />
+    <NavigationProperty Name="KhachHang" Relationship="CunstudioModel.FK_Anh_KhachHang" FromRole="Anh" ToRole="KhachHang" />
+  </EntityType>
+  <EntityType Name="GoiDichVu">
+    <Key>
+      <PropertyRef Name="Id_Goi" />
+    </Key>
+    <Property Name="Id_Goi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenGoi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DiaDiem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HoTro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SoTam" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="GiaTien" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="HopDongs" Relationship="CunstudioModel.FK_HopDong_DoiDichVu" FromRole="GoiDichVu" ToRole="HopDong" />
+  </EntityType>
+  <EntityType Name="GopYKH">
+    <Key>
+      <PropertyRef Name="ID_GopY" />
+    </Key>
+    <Property Name="ID_GopY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="HopDong">
+    <Key>
+      <PropertyRef Name="ID_HopDong" />
+    </Key>
+    <Property Name="ID_HopDong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_KhachHang" Type="Int32" />
+    <Property Name="ID_Admin" Type="Int32" />
+    <Property Name="ID_Goi" Type="Int32" />
+    <Property Name="NgayTaoHD" Type="DateTime" Precision="3" />
+    <Property Name="NgayChup" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Admins" Relationship="CunstudioModel.FK_Admin_HopDong" FromRole="HopDong" ToRole="Admin" />
+    <NavigationProperty Name="Admin" Relationship="CunstudioModel.FK_HopDong_Admin" FromRole="HopDong" ToRole="Admin" />
+    <NavigationProperty Name="GoiDichVu" Relationship="CunstudioModel.FK_HopDong_DoiDichVu" FromRole="HopDong" ToRole="GoiDichVu" />
+    <NavigationProperty Name="KhachHang" Relationship="CunstudioModel.FK_HopDong_KhachHang" FromRole="HopDong" ToRole="KhachHang" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="Id_KhachHang" />
+    </Key>
+    <Property Name="Id_KhachHang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="TaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Anhs" Relationship="CunstudioModel.FK_Anh_KhachHang" FromRole="KhachHang" ToRole="Anh" />
+    <NavigationProperty Name="HopDongs" Relationship="CunstudioModel.FK_HopDong_KhachHang" FromRole="KhachHang" ToRole="HopDong" />
+  </EntityType>
+  <Association Name="FK_Admin_HopDong">
+    <End Type="CunstudioModel.HopDong" Role="HopDong" Multiplicity="0..1" />
+    <End Type="CunstudioModel.Admin" Role="Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HopDong">
+        <PropertyRef Name="ID_HopDong" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="ID_HopDong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Anh_Admin">
+    <End Type="CunstudioModel.Admin" Role="Admin" Multiplicity="0..1" />
+    <End Type="CunstudioModel.Anh" Role="Anh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="ID_Admin" />
+      </Principal>
+      <Dependent Role="Anh">
+        <PropertyRef Name="ID_Admin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HopDong_Admin">
+    <End Type="CunstudioModel.Admin" Role="Admin" Multiplicity="0..1" />
+    <End Type="CunstudioModel.HopDong" Role="HopDong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="ID_Admin" />
+      </Principal>
+      <Dependent Role="HopDong">
+        <PropertyRef Name="ID_Admin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Anh_Albums">
+    <End Type="CunstudioModel.Album" Role="Album" Multiplicity="0..1" />
+    <End Type="CunstudioModel.Anh" Role="Anh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="ID_Album" />
+      </Principal>
+      <Dependent Role="Anh">
+        <PropertyRef Name="ID_Album" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Anh_KhachHang">
+    <End Type="CunstudioModel.KhachHang" Role="KhachHang" Multiplicity="0..1" />
+    <End Type="CunstudioModel.Anh" Role="Anh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="Id_KhachHang" />
+      </Principal>
+      <Dependent Role="Anh">
+        <PropertyRef Name="ID_KhachHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HopDong_DoiDichVu">
+    <End Type="CunstudioModel.GoiDichVu" Role="GoiDichVu" Multiplicity="0..1" />
+    <End Type="CunstudioModel.HopDong" Role="HopDong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoiDichVu">
+        <PropertyRef Name="Id_Goi" />
+      </Principal>
+      <Dependent Role="HopDong">
+        <PropertyRef Name="ID_Goi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HopDong_KhachHang">
+    <End Type="CunstudioModel.KhachHang" Role="KhachHang" Multiplicity="0..1" />
+    <End Type="CunstudioModel.HopDong" Role="HopDong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="Id_KhachHang" />
+      </Principal>
+      <Dependent Role="HopDong">
+        <PropertyRef Name="ID_KhachHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

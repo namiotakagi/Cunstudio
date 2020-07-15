@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CunstudioModelStoreContainer" CdmEntityContainer="CunstudioEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="CunstudioModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="ID_HopDong" ColumnName="ID_HopDong" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="ID_Admin" ColumnName="ID_Admin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Albums">
+      <EntityTypeMapping TypeName="CunstudioModel.Album">
+        <MappingFragment StoreEntitySet="Albums">
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="TenAlbum" ColumnName="TenAlbum" />
+          <ScalarProperty Name="ID_Album" ColumnName="ID_Album" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Anhs">
+      <EntityTypeMapping TypeName="CunstudioModel.Anh">
+        <MappingFragment StoreEntitySet="Anh">
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="HienThi" ColumnName="HienThi" />
+          <ScalarProperty Name="ID_KhachHang" ColumnName="ID_KhachHang" />
+          <ScalarProperty Name="ID_Admin" ColumnName="ID_Admin" />
+          <ScalarProperty Name="ID_Album" ColumnName="ID_Album" />
+          <ScalarProperty Name="ID_Anh" ColumnName="ID_Anh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GoiDichVus">
+      <EntityTypeMapping TypeName="CunstudioModel.GoiDichVu">
+        <MappingFragment StoreEntitySet="GoiDichVu">
+          <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
+          <ScalarProperty Name="SoTam" ColumnName="SoTam" />
+          <ScalarProperty Name="HoTro" ColumnName="HoTro" />
+          <ScalarProperty Name="DiaDiem" ColumnName="DiaDiem" />
+          <ScalarProperty Name="TenGoi" ColumnName="TenGoi" />
+          <ScalarProperty Name="Id_Goi" ColumnName="Id_Goi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GopYKHs">
+      <EntityTypeMapping TypeName="CunstudioModel.GopYKH">
+        <MappingFragment StoreEntitySet="GopYKH">
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="ID_GopY" ColumnName="ID_GopY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HopDongs">
+      <EntityTypeMapping TypeName="CunstudioModel.HopDong">
+        <MappingFragment StoreEntitySet="HopDong">
+          <ScalarProperty Name="ID_Goi" ColumnName="ID_Goi" />
+          <ScalarProperty Name="ID_Admin" ColumnName="ID_Admin" />
+          <ScalarProperty Name="ID_KhachHang" ColumnName="ID_KhachHang" />
+          <ScalarProperty Name="ID_HopDong" ColumnName="ID_HopDong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KhachHangs">
+      <EntityTypeMapping TypeName="CunstudioModel.KhachHang">
+        <MappingFragment StoreEntitySet="KhachHang">
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="Id_KhachHang" ColumnName="Id_KhachHang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SuaAnhTheoYCs">
+      <EntityTypeMapping TypeName="CunstudioModel.SuaAnhTheoYC">
+        <MappingFragment StoreEntitySet="SuaAnhTheoYC">
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="MaAnh" ColumnName="MaAnh" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tables">
+      <EntityTypeMapping TypeName="CunstudioModel.Table">
+        <MappingFragment StoreEntitySet="Table">
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="MaAnh" ColumnName="MaAnh" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

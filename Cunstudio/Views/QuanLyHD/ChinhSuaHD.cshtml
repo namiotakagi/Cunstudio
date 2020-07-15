@@ -1,0 +1,56 @@
+﻿@model Cunstudio.Models.HopDong
+
+@{
+    ViewBag.Title = "Chỉnh sửa hợp đồng";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<main>
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header"><h3 class="text-center font-weight-light my-4">Chỉnh sửa hợp đồng</h3></div>
+                <div class="card-body">
+                    @using (Html.BeginForm("ChinhSuaHD", "QuanLyHD", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.ID_HopDong)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_KhachHang, "Mã khách hàng", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-13">
+                                @Html.DropDownList("ID_KhachHang", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_KhachHang, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_Admin, "Mã admin", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-13">
+                                @Html.DropDownList("ID_Admin", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_Admin, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_Goi, "Mã gói dịch vụ", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-13">
+                                @Html.DropDownList("ID_Goi", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_Goi, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-group mt-4 mb-0">
+                                <input type="submit" name="save" class="btn btn-primary btn-block" value="Thay đổi" />
+                                <input class="btn btn-primary btn-block" onclick="location.href='@Url.Action("DanhSachHD","QuanLyHD")'" value="Quay lại!" />
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

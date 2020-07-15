@@ -1,0 +1,9 @@
+﻿Generated model file: CunStudio.edmx.
+Loading metadata from the database took 00:00:01.1454837.
+Generating the model took 00:00:01.4602725.
+Generated model file: CunStudio.edmx.
+Loading metadata from the database took 00:00:00.6591996.
+Generating the model took 00:00:01.1725208.
+Generated model file: CunStudio.edmx.
+Loading metadata from the database took 00:00:00.7522734.
+Generating the model took 00:00:01.2230439.

@@ -1,0 +1,66 @@
+﻿@model Cunstudio.Models.Anh
+
+@{
+    ViewBag.Title = "Xóa ảnh";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<main>
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header"><h3 class="text-center font-weight-light my-4">Thêm ảnh mới</h3></div>
+                <div class="card-body">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.HienThi)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.HienThi)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.HinhAnh)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.HinhAnh)
+                        <span style="color:red;"> @ViewBag.upload </span>
+                        <br />
+                        <img src="@Url.Content("~/Content/Image/"+Model.HinhAnh)" width="400" height="220" />
+
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Admin.Ten)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Admin.Ten)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Album.TenAlbum)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Album.TenAlbum)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.KhachHang.Ten)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.KhachHang.Ten)
+                    </dd>
+                    @using (Html.BeginForm("XoaAnh", "QuanLyAnh", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                    {
+                        <div class="form-group mt-4 mb-0">
+                            <input type="submit" name="delete" class="btn btn-danger btn-block" value="Xóa" />
+                            <input class="btn btn-primary btn-block" onclick="location.href='@Url.Action("DanhSachAnh", "QuanLyAnh")'" value="Quay lại!" />
+                        </div>
+                    }
+                    </div>
+            </div>
+        </div>
+    </div>

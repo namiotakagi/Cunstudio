@@ -1,0 +1,96 @@
+﻿@model Cunstudio.Models.KhachHang
+
+@{
+    ViewBag.Title = "ThongTinKH";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+@if (Session["idkh"] == null)
+{
+    Response.Redirect(Url.Action("Index", "Home"));
+}
+<!-- bradcam_area  -->
+<div class="bradcam_area breadcam_bg_6 black_overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text text-center">
+                    <h3>Ảnh của bạn</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / bradcam_area  -->
+<main>
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header"><h3 class="text-center font-weight-light my-4">Xóa khách hàng</h3></div>
+                <div class="card-body">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Ten)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Ten)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SDT)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SDT)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DiaChi)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.DiaChi)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TaiKhoan)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.TaiKhoan)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MatKhau)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.MatKhau)
+                        </dd>
+
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group mt-4 mb-0">
+                            <input type="submit" name="" class="btn btn-primary btn-block" value="Chỉnh sửa thông tin cá nhân" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div>
+    @Html.ActionLink("Quay lại!", "DanhSachAnh")
+</div>

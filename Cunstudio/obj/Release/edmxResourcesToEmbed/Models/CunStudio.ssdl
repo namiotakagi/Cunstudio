@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CunstudioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="ID_Admin" />
+    </Key>
+    <Property Name="ID_Admin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="250" />
+    <Property Name="SDT" Type="varchar" MaxLength="12" />
+    <Property Name="TaiKhoan" Type="nvarchar" MaxLength="50" />
+    <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID_HopDong" Type="int" />
+  </EntityType>
+  <EntityType Name="Albums">
+    <Key>
+      <PropertyRef Name="ID_Album" />
+    </Key>
+    <Property Name="ID_Album" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenAlbum" Type="nvarchar" MaxLength="250" />
+    <Property Name="MoTa" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Anh">
+    <Key>
+      <PropertyRef Name="ID_Anh" />
+    </Key>
+    <Property Name="ID_Anh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Album" Type="int" />
+    <Property Name="ID_Admin" Type="int" />
+    <Property Name="ID_KhachHang" Type="int" />
+    <Property Name="HienThi" Type="bit" />
+    <Property Name="HinhAnh" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="GoiDichVu">
+    <Key>
+      <PropertyRef Name="Id_Goi" />
+    </Key>
+    <Property Name="Id_Goi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenGoi" Type="nvarchar" MaxLength="255" />
+    <Property Name="DiaDiem" Type="nvarchar(max)" />
+    <Property Name="HoTro" Type="nvarchar(max)" />
+    <Property Name="SoTam" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="GiaTien" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="GopYKH">
+    <Key>
+      <PropertyRef Name="ID_GopY" />
+    </Key>
+    <Property Name="ID_GopY" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="SDT" Type="nvarchar" MaxLength="12" />
+    <Property Name="NoiDung" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="HopDong">
+    <Key>
+      <PropertyRef Name="ID_HopDong" />
+    </Key>
+    <Property Name="ID_HopDong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_KhachHang" Type="int" />
+    <Property Name="ID_Admin" Type="int" />
+    <Property Name="ID_Goi" Type="int" />
+    <Property Name="NgayTaoHD" Type="datetime" />
+    <Property Name="NgayChup" Type="datetime" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="Id_KhachHang" />
+    </Key>
+    <Property Name="Id_KhachHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="100" />
+    <Property Name="SDT" Type="varchar" MaxLength="12" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
+    <Property Name="TaiKhoan" Type="nvarchar" MaxLength="50" />
+    <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Admin_HopDong">
+    <End Role="HopDong" Type="Self.HopDong" Multiplicity="0..1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HopDong">
+        <PropertyRef Name="ID_HopDong" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="ID_HopDong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Anh_Admin">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+    <End Role="Anh" Type="Self.Anh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="ID_Admin" />
+      </Principal>
+      <Dependent Role="Anh">
+        <PropertyRef Name="ID_Admin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Anh_Albums">
+    <End Role="Albums" Type="Self.Albums" Multiplicity="0..1" />
+    <End Role="Anh" Type="Self.Anh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Albums">
+        <PropertyRef Name="ID_Album" />
+      </Principal>
+      <Dependent Role="Anh">
+        <PropertyRef Name="ID_Album" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Anh_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="Anh" Type="Self.Anh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="Id_KhachHang" />
+      </Principal>
+      <Dependent Role="Anh">
+        <PropertyRef Name="ID_KhachHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HopDong_Admin">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+    <End Role="HopDong" Type="Self.HopDong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="ID_Admin" />
+      </Principal>
+      <Dependent Role="HopDong">
+        <PropertyRef Name="ID_Admin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HopDong_DoiDichVu">
+    <End Role="GoiDichVu" Type="Self.GoiDichVu" Multiplicity="0..1" />
+    <End Role="HopDong" Type="Self.HopDong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoiDichVu">
+        <PropertyRef Name="Id_Goi" />
+      </Principal>
+      <Dependent Role="HopDong">
+        <PropertyRef Name="ID_Goi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HopDong_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="HopDong" Type="Self.HopDong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="Id_KhachHang" />
+      </Principal>
+      <Dependent Role="HopDong">
+        <PropertyRef Name="ID_KhachHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CunstudioModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Albums" EntityType="Self.Albums" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Anh" EntityType="Self.Anh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GoiDichVu" EntityType="Self.GoiDichVu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GopYKH" EntityType="Self.GopYKH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HopDong" EntityType="Self.HopDong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Admin_HopDong" Association="Self.FK_Admin_HopDong">
+      <End Role="HopDong" EntitySet="HopDong" />
+      <End Role="Admin" EntitySet="Admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Anh_Admin" Association="Self.FK_Anh_Admin">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="Anh" EntitySet="Anh" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Anh_Albums" Association="Self.FK_Anh_Albums">
+      <End Role="Albums" EntitySet="Albums" />
+      <End Role="Anh" EntitySet="Anh" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Anh_KhachHang" Association="Self.FK_Anh_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="Anh" EntitySet="Anh" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HopDong_Admin" Association="Self.FK_HopDong_Admin">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="HopDong" EntitySet="HopDong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HopDong_DoiDichVu" Association="Self.FK_HopDong_DoiDichVu">
+      <End Role="GoiDichVu" EntitySet="GoiDichVu" />
+      <End Role="HopDong" EntitySet="HopDong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HopDong_KhachHang" Association="Self.FK_HopDong_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="HopDong" EntitySet="HopDong" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

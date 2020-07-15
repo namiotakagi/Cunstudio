@@ -1,0 +1,64 @@
+﻿@using Cunstudio.Models;
+@model IEnumerable<KhachHang>
+@{
+    ViewBag.Title = "Danh sách khách hàng";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 15);
+}
+
+<main>
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header"><h3 class="text-center font-weight-light my-4">Danh sách khác hàng</h3></div>
+                <div class="card-body">
+                    <input class="btn btn-primary btn-block" onclick="location.href='@Url.Action("TaoMoiKH","QuanLyKH")'" value="Tạo mới" />
+                    @grid.GetHtml(
+                             tableStyle: "gridTable",
+                             headerStyle: "gridHead",
+                             footerStyle: "gridFooter",
+                             rowStyle: "gridRow",
+                             alternatingRowStyle: "gridAltRow",
+                             columns: grid.Columns(
+                             grid.Column("ID_KhachHang", "Mã khách hàng"),
+                             grid.Column("Ten", "Tên khách hàng"),
+                             grid.Column("SDT", "Số điện thoại"),
+                             grid.Column("Email", "Email"),
+                             grid.Column("TaiKhoan", "Tài khoản"),
+                             grid.Column(format: p => Html.ActionLink("Xoá", "XoaKH", new { id = p.ID_KhachHang }))
+                             ))
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+
+
+<style>
+    .gridTable {
+        border: 1px solid #808080;
+        width: 100%;
+    }
+
+    .gridHead {
+        border: 1px solid #808080;
+        background-color: lightblue;
+    }
+
+    .gridRow {
+        border: 1px solid #808080;
+    }
+
+    .gridAltRow {
+        border: 1px solid #808080;
+    }
+
+
+    .gridFooter {
+        font-weight: bold;
+        border: 1px solid #808080;
+    }
+</style>

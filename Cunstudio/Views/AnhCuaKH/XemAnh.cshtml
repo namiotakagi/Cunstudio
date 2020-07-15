@@ -1,0 +1,113 @@
+﻿@using Cunstudio.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Anh>
+@{
+    ViewBag.Title = "XemAnh";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+@if (Session["idkh"] == null)
+{
+    Response.Redirect(Url.Action("Index", "Home"));
+}
+<!-- bradcam_area  -->
+<div class="bradcam_area breadcam_bg_6 black_overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text text-center">
+                    <h3>Ảnh của bạn</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / bradcam_area  -->
+<!-- gallery_area  -->
+<div class="gallery_area baby_gallery_wrap">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-7">
+                <div class="section_title text-center mb-50">
+                    @*<h3>My world class photography</h3>*@
+                    <p>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid p-0">
+        <div class="row no-gutters grid">
+            @{ int i = 0;}
+            @foreach (var item in Model)
+            {
+                <div class="single_gallery grid-item large_img ">
+                    <a class="img-pop-up thumb" href="~/Content/Image/@item.HinhAnh">
+                        <h3>@item.ID_Anh</h3>
+                        <img src="~/Content/Image/@item.HinhAnh" alt="">
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- /gallery_area  -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-7 col-lg-7">
+            <div class="section_title text-center mb-50">
+                <h3></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="next_prev_post">
+    <div class="container">
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("XemAnh", new { page = page }))
+        <div class="row align-items-center border_bottom">
+            <div class="col-xl-3 col-lg-3 col-md-3">
+                <div class="post_lisk text-left">
+                    <a href="#">
+                        @*<img src="~/Content/Home/img/arrow/1.svg" alt=""> <span>Trước</span>*@
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <div class="socical_button">
+                    <ul>
+                        <li>
+                            <a href="#"> <i class="fa fa-facebook"></i> Facebook </a>
+                        </li>
+                        <li>
+                            <a href="#"> <i class="fa fa-youtube"></i> Youtube </a>
+                        </li>
+                        <li>
+                            <a href="#"> <i class="fa fa-instagram"></i> Instagram </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3">
+                <div class="post_lisk text-right">
+                    <a href="#">
+                        @*<span>Sau</span> <img src="~/Content/Home/img/arrow/2.svg" alt="">*@
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<section class="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="contact-title">Góp ý chỉnh sửa ảnh</h2>
+            </div>
+            <div class="col-lg-8">
+                @Html.Partial("~Views/AnhCuaKH/YeuCaupartial.cshtml")
+            </div>
+        </div>
+    </div>
+</section>*@

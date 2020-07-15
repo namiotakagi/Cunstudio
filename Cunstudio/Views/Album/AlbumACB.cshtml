@@ -1,0 +1,98 @@
+﻿@using Cunstudio.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Anh>
+
+@{
+    ViewBag.Title = "Album ảnh cho bé";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<!-- bradcam_area  -->
+<div class="bradcam_area bradcam_bg_1 black_overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text text-center">
+                    <h3>Album ảnh cho bé</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / bradcam_area  -->
+<!-- gallery_area  -->
+<div class="gallery_area baby_gallery_wrap">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-7">
+                <div class="section_title text-center mb-50">
+                    @*<h3>My world class photography</h3>*@
+                    <p>
+                        Những đứa con kháu khỉnh của bạn, chúng đang lớn lên từng ngày,
+                        Bạn là người nhận thấy rõ nhất điều đó . Hãy lưu lại những thời gian
+                        đó và tập hợp chúng thành một album, và cuốn album đó sẽ trở thành
+                        vật vô giá, không gì đánh đổi được. Đó là niềm tự hào của cha mẹ là
+                        kỉ niệm suốt những năm tháng nuôi con lớn khôn.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid p-0">
+        <div class="row no-gutters grid">
+            @{ int i = 0;}
+            @foreach (var item in Model)
+            {
+                <div class="single_gallery grid-item large_img ">
+                    @*<a class="img-pop-up  thumb" href="@Url.Content("~Content/Image/"+item.HinhAnh)">
+                            <img src="@Url.Content("~Content/Image/"+item.HinhAnh)" alt="">
+                        </a>*@
+                    <a class="img-pop-up thumb" href="~/Content/Image/@item.HinhAnh">
+                        <img src="~/Content/Image/@item.HinhAnh" alt="">
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="next_prev_post">
+
+</div>
+<!-- /gallery_area  -->
+<div class="next_prev_post">
+    <div class="container">
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("AlbumACB", new { page = page }))
+        <div class="row align-items-center border_bottom">
+            <div class="col-xl-3 col-lg-3 col-md-3">
+                <div class="post_lisk text-left">
+                    @*<a href="@Html.PagedListPager(Model, page => Url.Action("Index",new { page }))">
+                            <img src="@Url.Content("~/Content/Home/img/arrow/1.svg")" alt=""> <span>Trước</span>
+                        </a>*@
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <div class="socical_button">
+                    <ul>
+                        <li>
+                            <a href="#"> <i class="fa fa-facebook"></i> Facebook </a>
+                        </li>
+                        <li>
+                            <a href="#"> <i class="fa fa-youtube"></i> Youtube </a>
+                        </li>
+                        <li>
+                            <a href="#"> <i class="fa fa-instagram"></i> Instagram </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3">
+                <div class="post_lisk text-right">
+                    <a href="#">
+                        @*<span>Sau</span> <img src="~/Content/Home/img/arrow/2.svg" alt="">*@
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

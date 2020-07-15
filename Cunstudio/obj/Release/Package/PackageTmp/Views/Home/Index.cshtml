@@ -1,0 +1,137 @@
+﻿@using Cunstudio.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<!-- slider_area_start -->
+<div class="slider_area">
+    <div class="slider_active owl-carousel">
+        <div class="single_slider  d-flex align-items-center slider_bg_1 black_overlay">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-12 col-md-12">
+                        <div class="slider_text text-center ">
+                            <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s">
+                                Cún Studio
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single_slider  d-flex align-items-center slider_bg_2 black_overlay">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-12 col-md-12">
+                        <div class="slider_text text-center ">
+                            <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s">
+                                Together save your memory
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single_slider  d-flex align-items-center slider_bg_3 black_overlay">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-12 col-md-12">
+                        <div class="slider_text text-center ">
+                            <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s">
+                                Cùng bạn lưu giữ từng khoảng khắc
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- photography_skill_area  -->
+<div class="photography_skill_area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-9 col-md-9">
+                <div class="section_title text-center">
+                    <h3>Các dịch vụ mang lại</h3>
+                    <p>
+                        Cún Studio chuyên nhận chụp hình cho bé, chụp ảnh chân dung nghệ thuật cho trẻ sơ sinh,
+                        trẻ nhỏ, các bà mẹ mang thai và chụp ảnh kỷ niệm toàn gia đình. Những gì chúng tôi
+                        có bắt đầu đơn thuần đến với dịch vụ này là sự yêu thích đối với trẻ nhỏ,
+                        và cảm nhận sự hạnh phúc của gia đình rất đáng để lưu giữ lại những khoảnh khắc đó.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /photography_skill_area  -->
+<!-- wild_photography  -->
+<div class="wild_photography">
+    <div class="container-fluid p-0">
+        <div class="row no-gutters align-items-center ">
+            <div class="col-lg-6">
+                <div class="wildlife_photo">
+                    <img src="~/Content/Home/img/photography/CUN34.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="section_title">
+                    <h3>Vì sao nên chụp ảnh cho bé yêu ?</h3>
+                    <p>
+                        Để lưu giữ những khoảnh khắc ngọt ngào nhất của Bé yêu, ngày nay đa số
+                        <br>các Ba Mẹ đều sử dụng dịch vụ chụp hình cho Bé để theo dõi sự
+                        <br>lớn khôn của các con từng ngày. Đây cũng là một món quà
+                        <br>vô cùng quý giá dành cho các con khi trưởng thành
+                    </p>
+                    @*<a href="#" class="black_btn">Explore Work</a>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /wild_photography  -->
+<!-- gallery_area  -->
+<div class="gallery_area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-7">
+                <div class="section_title text-center mb-50">
+                    <h3>Tại sao nên chọn Cún Studio ?</h3>
+                    <p>
+                        Bé yêu là niềm hạnh phúc lớn nhất của Ba Mẹ. Từ những năm tháng đầu đời,
+                        các bé luôn có những khoảnh khắc thật đáng yêu khó miêu tả được bằng lời.
+                        Cún Studio tự hào là thương hiệu tiên phong định nghĩa lại khái niệm
+                        chụp ảnh cho bé tại nhà. Được đồng hành cùng bé yêu của Mẹ từ những
+                        giai đoạn đầu tiên là niềm vinh hạnh lớn nhất của Cún.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid p-0">
+        <div class="row no-gutters ">
+            @Html.Partial("~/Views/Home/ACBpartial.cshtml")
+            @Html.Partial("~/Views/Home/ASSpartial.cshtml")
+            @Html.Partial("~/Views/Home/AGDpartial.cshtml")
+        </div>
+    </div>
+</div>
+<!-- /gallery_area  -->
+<!-- testimonial_area  -->
+<div class="testimonial_area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-10">
+                <div class="testimonial_active owl-carousel">
+                    <div class="single_testmonial text-center">
+                        @*<h3>Mọi thắc mắc xin vui lòng liên hệ</h3>*@
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /testimonial_area  -->

@@ -1,0 +1,63 @@
+﻿@using Cunstudio.Models
+@model Anh
+@{
+    ViewBag.Title = "Thêm ảnh";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<main>
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header"><h3 class="text-center font-weight-light my-4">Thêm ảnh mới</h3></div>
+                <div class="card-body">
+                    @using (Html.BeginForm("ThemAnh", "QuanLyAnh", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <div class="form-group">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ID_Album, "Tên album", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("ID_Album", null, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_Admin, "Tên người chụp", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("ID_Admin", null, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_KhachHang, "Tên khách hàng", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("ID_KhachHang", null, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.HienThi, "Hiển thị", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.DropDownListFor(Model => Model.HienThi, (new[] { new SelectListItem { Text = "Có", Value = "True" }, new SelectListItem { Text = "Không", Value = "False" } }), new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.HinhAnh, "Hình ảnh", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <input name="HinhAnh" type="file" />
+                                <span style="color:red;"> @ViewBag.upload </span>
+                            </div>
+                        </div>
+                        <div class="form-group mt-4 mb-0">
+                            <input type="submit" name="submit" class="btn btn-primary btn-block" value="Thêm ảnh" />
+                            <input class="btn btn-primary btn-block" onclick="location.href='@Url.Action("DanhSachAnh","QuanLyAnh")'" value="Quay lại!"/>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
